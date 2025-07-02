@@ -5,13 +5,13 @@ import plotly.graph_objects as go
 st.title("TSLA Reddit Sentiment Dashboard with Price Correlation")
 
 # Loading sentiment data
-df_sentiment = pd.read_csv("../data/tsla_reddit_sentiment.csv")
+df_sentiment = pd.read_csv("data/tsla_reddit_sentiment.csv")
 df_sentiment['created_utc'] = pd.to_datetime(df_sentiment['created_utc'])
 sentiment_daily = df_sentiment[['created_utc', 'compound']].copy()
 sentiment_daily = sentiment_daily.set_index('created_utc').resample('D').mean().dropna().reset_index()
 
 # Loading price data
-df_price = pd.read_csv("../data/tsla_price.csv")
+df_price = pd.read_csv("data/tsla_price.csv")
 df_price['Date'] = pd.to_datetime(df_price['Date'])
 
 
